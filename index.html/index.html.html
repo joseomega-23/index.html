@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador Dark</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #1e1e1e; /* fundo escuro */
+      color: #ffffff; /* texto claro */
+    }
+    h1 { color: #ffffff; }
+    #contador {
+      font-size: 2.5rem;
+      margin: 20px 0;
+      color: #ffcc00; /* destaque do número */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #444444; /* botão escuro */
+      color: #ffffff;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #ffcc00; /* muda para amarelo ao passar o mouse */
+      color: #000000; /* texto preto no hover */
+    }
+  </style>
+</head>
+<body>
+  <h1>Contador de Cliques Dark</h1>
+  <p id="contador">0</p>
+  <button id="btnContar">Clique aqui</button>
+  <button id="btnResetar">Resetar</button>
+
+  <script>
+    const contadorEl = document.getElementById('contador');
+    const btnContar = document.getElementById('btnContar');
+    const btnResetar = document.getElementById('btnResetar');
+
+    let numero = localStorage.getItem('contador') ? parseInt(localStorage.getItem('contador')) : 0;
+    contadorEl.innerText = numero;
+
+    function contar() {
+      numero++;
+      contadorEl.innerText = numero;
+      localStorage.setItem('contador', numero);
+    }
+
+    function resetar() {
+      numero = 0;
+      contadorEl.innerText = numero;
+      localStorage.setItem('contador', numero);
+    }
+
+    btnContar.addEventListener('click', contar);
+    btnResetar.addEventListener('click', resetar);
+  </script>
+</body>
+</html>
